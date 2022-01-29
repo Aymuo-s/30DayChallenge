@@ -1,0 +1,18 @@
+class Solution{
+  public:
+    vector<vector<string> > Anagrams(vector<string>& string_list) {
+        //code here
+        map<string,vector<string>>mpp;
+        vector<vector<string>> res;
+        for(auto it: string_list)
+        {
+            string temp=it;
+            sort(it.begin(),it.end());
+            mpp[it].push_back(temp);
+        }
+        for(const auto it:mpp)
+            res.push_back(it.second);
+            
+        return res;
+    }
+};

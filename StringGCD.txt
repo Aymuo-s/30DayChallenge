@@ -1,0 +1,36 @@
+class Solution {
+public:
+    string gcdOfStrings(string str1, string str2) {
+            
+        int i,j,k;
+        string res,res2;
+         if(str2.size()>str1.size())
+         {
+             res=str1;
+             str1=str2;
+             str2=res;
+         }
+        int n=str1.size();
+        int m=str2.size(); 
+        for(i=m;i>0;i--)
+        {
+            res="";
+            res2="";
+            if(n%i!=0 || m%i!=0)
+                continue;
+            string temp(str2.begin(),str2.begin()+i);
+            
+            for(j=1;j<=n/i;j++)
+            {
+                res=res+temp;
+            }
+            for(k=1;k<=m/i;k++)
+                res2=res2+temp;
+            if(res==str1 && res2==str2)
+                return temp;
+
+        }
+        return "";
+  
+    }
+};

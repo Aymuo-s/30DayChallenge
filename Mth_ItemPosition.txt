@@ -1,0 +1,15 @@
+class Solution {
+  public:
+    int findPosition(int N , int M , int K) {
+        // code here
+        int i=0;
+        while(--M)
+        {
+            K++;
+            if(K>N)
+            K=K%N;
+        }
+    
+        return K;
+    }
+};

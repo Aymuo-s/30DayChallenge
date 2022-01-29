@@ -1,0 +1,59 @@
+class Solution{
+public:
+    string decodedString(string s){
+        // code here
+        int i,j,count;
+        stack<int> si;  //to store integers to count number of repetition
+        stack<char>sc;  //to store characters
+        string temp="",result="";
+        for(i=0;i<s.size();i++)
+        {
+            count=0;
+            if(s[i]>='1' && s[i]<='9')
+            {
+                while(s[i]>='0' && s[i]<='9')
+                {
+                    count=count*10+(s[i]-'0');
+                    i++;
+                }
+                i--;
+                si.push(count);
+            }
+            else if(s[i]==']')
+            {
+                temp="";
+
+                count = si.top();
+                si.pop();
+
+                while ( sc.top()!='[' )
+                {
+                    temp = sc.top() + temp;
+                    sc.pop();
+                }
+
+                sc.pop();   //to pop the '[' character 
+
+                for (j = 0; j < count; j++)
+                    result = result + temp;
+            
+                for (j = 0; j < result.size(); j++)
+                    sc.push(result[j]);
+ 
+                result = "";
+            }
+            else
+            sc.push(s[i]);
+            
+        }
+        
+        while (! sc.empty())
+        {
+            result = sc.top() + result;
+            sc.pop();
+        }
+ 
+    return result;
+        
+    }
+};

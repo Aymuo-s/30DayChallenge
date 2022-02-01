@@ -1,0 +1,34 @@
+class Solution {
+  public:
+    bool canPair(vector<int> nums, int k) {
+        // Code here.
+        map<int,int> rem;
+        for(auto it:nums)
+        {
+            rem[it%k]++;
+        }
+        for(auto it: rem)
+        {
+            int x=it.first;
+            int y=k-x;
+           // cout<<x<<" "<<y<<endl;
+            if(x==0)
+            {
+                if(it.second%2)
+                return false;
+            }
+            else if(x==y)
+            {
+                if(it.second%2)
+                return false;
+            }
+            else
+            {
+                if(rem[x]!=rem[y])
+                return false;
+            }
+            
+        }
+       return true;
+    }
+};
